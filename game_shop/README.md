@@ -1,6 +1,6 @@
-# vue_shop
+# game_shop
 
-> A Vue.js project
+> gamer
 
 ## Build Setup
 
