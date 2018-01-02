@@ -1,6 +1,6 @@
 # game
 
-> A Vue.js project
+> ym
 
 ## Build Setup
 

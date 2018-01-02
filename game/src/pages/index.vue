@@ -22,8 +22,10 @@
 			</div>
 		</div>
 		<div class="index-right">
+		<slideshow :slides='slides' :inv='slidespeed'></slideshow>
 			<div class="index-board-list">
-				<div class="index-board-item" v-for="item in boardList">
+				<div class="index-board-item" v-for="(item,index) in boardList"
+				:class="[{'line-last': index%2!==0},'index-board-'+item.id]">
 					<div class="index-board-item-inner">
 						<h2>{{item.title}}</h2>
 						<p>{{item.description}}</p>
@@ -36,10 +38,43 @@
 		</div>
 	</div>
 </template>
+
 <script type="text/javascript">
+import slideshow from '../components/slideshow'
 	export default{
+		// 轮播组件
+		components:{
+			slideshow
+		},
+		// vue-resource
+		created:function (){
+			this.$http.get('getlist')
+			.then(function (data) {
+				console.logo(data)
+			},function (err){
+
+			})
+		},
 			data(){
 				return{
+				slidespeed:2000,
+				slides:[
+					{
+						src:require('../assets/slideShow/Pic1.jpg'),
+						title:'哈有跟',
+						href:'https://www.baidu.com/'
+					},
+					{
+						src:require('../assets/slideShow/Pic2.jpg'),
+						title:'瓦达',
+						href:'https://www.baidu.com/'
+					},
+					{
+						src:require('../assets/slideShow/Pic3.jpg'),
+						title:'破洞肯',
+						href:'https://www.baidu.com/'
+					}
+				],
 				productList: {
 		        pc: {
 		          title: 'PC产品',
@@ -139,7 +174,7 @@
 			}
 		}
 </script>
-<style type="text/css" scoped>
+<style scoped>
 	.index-wrap{
 		width: 1200px;
 		margin: 0 auto;
@@ -217,8 +252,17 @@
 .index-board-button {
   margin-top: 20px;
   background: #00C88F;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 }
-
+.index-board-button a{
+  color: white;
+}
+.line-last {
+  margin-right: 0px;
+}
 .index-board-car .index-board-item-inner{
   background: url(../assets/images/1.png) no-repeat;
 }
