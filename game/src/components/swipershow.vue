@@ -1,6 +1,6 @@
 <template>
   <swiper class="slide-show" :options="swiperOption">
-    <swiper-slide v-for="slide in swiperSlides">
+    <swiper-slide v-for="slide in swiperSlides" :key="slide.id" >
       <a :href="slide.href"><img :src="slide.src" alt=""></a>
       <h2 class="title">{{slide.title}}</h2>
     </swiper-slide>
