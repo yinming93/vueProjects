@@ -11,7 +11,7 @@
 						<li class="nav-pile">|</li>
 						<li>注册</li>
 						<li class="nav-pile">|</li>
-						<li>关于</li>
+						<router-link to="swiper"><li>关于vue-awesome-swiper</li></router-link>
 					</ul>
 				</div>
 			</div>
@@ -111,6 +111,7 @@ body {
 .nav-list li{
 	float: left;
 	cursor: pointer;
+	color: white;
 }
 .nav-pile{
 	padding: 0 10px;
